@@ -1,0 +1,11 @@
+scripts:
+  artisan: kool exec backend php artisan
+  composer: kool exec backend composer
+
+  setup:
+    - cp .env.example .env
+    - kool start
+    - kool run artisan key:generate
+
+  db-reset:
+    - kool run artisan migrate:fresh --seed
