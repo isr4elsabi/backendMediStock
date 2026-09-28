@@ -3,6 +3,7 @@ scripts:
   composer: kool exec backend composer
 
   setup:
+    - sh -c "docker network create medistock-red-global || true"
     - cp .env.example .env
     - kool start
     - kool run artisan key:generate
