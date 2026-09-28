@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
     networks:
-      - medistock-shared
+      - medistock-red-global
 
   backend:
     build:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - medistock-shared
+      - medistock-red-global
 
   nginx:
     image: nginx:alpine
@@ -35,7 +35,7 @@ services:
         - ./:/var/www
         - ./Docker/nginx/:/etc/nginx/conf.d/
     networks:
-        - medistock-shared
+        - medistock-red-global
 
   mailhog:
       image: 'mailhog/mailhog:latest'
@@ -43,8 +43,8 @@ services:
         - '1025:1025'
         - '8025:8025'
       networks:
-        - medistock-shared
+        - medistock-red-global
 
 networks:
-  medistock-shared:
-    driver: bridge
+  medistock-red-global:
+    external: true
